@@ -1,12 +1,19 @@
 import { createReadStream } from 'fs';
+import { pipeline } from 'stream/promises';
 import { __dirname } from './constants.js';
 
-const read = async () => {
-	const readableStream = createReadStream(`${__dirname}/files/fileToRead.txt`);
+const readableStream = createReadStream(`${__dirname}/files/fileToRead.txt`);
+const writableStream = process.stdout;
 
-	readableStream.on('data', (chunk) => {
-		process.stdout.write(chunk + '\n');
-    })
+const read = async () => {
+	try {
+		await pipeline(
+			readableStream,
+			writableStream,
+		);
+	} catch (error) {
+		throw Error(error);
+	}
 };
 
 await read();

@@ -1,11 +1,19 @@
 import { createWriteStream } from 'fs';
+import { pipeline } from 'stream/promises';
 import { __dirname } from './constants.js';
 
-const write = async () => {
-	const readFromTerminal = process.stdin;
-	const writeToFile = createWriteStream(`${__dirname}/files/fileToWrite.txt`);
+const readableStream = process.stdin;
+const writableStream= createWriteStream(`${__dirname}/files/fileToWrite.txt`);
 
-	readFromTerminal.pipe(writeToFile);
+const write = async () => {
+	try {
+		await pipeline(
+			readableStream,
+			writableStream,
+		);
+	} catch (error) {
+		throw Error(error);
+	}
 };
 
 await write();
