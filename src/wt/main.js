@@ -1,7 +1,7 @@
 import { Worker } from 'node:worker_threads';
 import { cpus } from 'node:os';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { dirname } from 'node:path';
 
 export const __dirname = dirname(fileURLToPath(import.meta.url));
 

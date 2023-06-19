@@ -1,5 +1,5 @@
-import { createReadStream } from 'fs';
-import { pipeline } from 'stream/promises';
+import { createReadStream } from 'node:fs';
+import { pipeline } from 'node:stream/promises';
 import { __dirname } from './constants.js';
 
 const readableStream = createReadStream(`${__dirname}/files/fileToRead.txt`);

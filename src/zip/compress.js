@@ -1,6 +1,6 @@
-import { createGzip } from 'zlib';
-import { pipeline } from 'stream/promises';
-import { createReadStream, createWriteStream } from 'fs';
+import { createGzip } from 'node:zlib';
+import { pipeline } from 'node:stream/promises';
+import { createReadStream, createWriteStream } from 'node:fs';
 import { __dirname } from './constants.js';
 
 const readableStream = createReadStream(`${__dirname}/files/fileToCompress.txt`);

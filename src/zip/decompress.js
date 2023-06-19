@@ -1,6 +1,6 @@
-import { createGunzip } from 'zlib';
-import { pipeline } from 'stream/promises';
-import { createReadStream, createWriteStream } from 'fs';
+import { createGunzip } from 'node:zlib';
+import { pipeline } from 'node:stream/promises';
+import { createReadStream, createWriteStream } from 'node:fs';
 import { __dirname } from './constants.js';
 
 const readableStream = createReadStream(`${__dirname}/files/archive.gz`);

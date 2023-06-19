@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { join } from 'path';
 import { __dirname, errorMessage } from './constants.js';
 
 const folderPath = `${__dirname}/files`;
@@ -10,7 +11,7 @@ const copy = async () => {
 		await fs.mkdir(newFolderPath)
 		const files = await fs.readdir(folderPath);
 		files.forEach((file) => {
-			fs.copyFile(`${folderPath}/${file}`, `${newFolderPath}/${file}`);
+			fs.copyFile(join(folderPath, file), join(newFolderPath, file));
 		});
 	} catch (error) {
 		throw Error(errorMessage);

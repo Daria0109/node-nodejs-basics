@@ -1,5 +1,5 @@
-import { createWriteStream } from 'fs';
-import { pipeline } from 'stream/promises';
+import { createWriteStream } from 'node:fs';
+import { pipeline } from 'node:stream/promises';
 import { __dirname } from './constants.js';
 
 const readableStream = process.stdin;
